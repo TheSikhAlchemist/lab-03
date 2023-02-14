@@ -16,14 +16,14 @@ def get_weather(city) -> Dict:
 # TODO: try connecting to a another API! e.g. reddit (https://www.reddit.com/dev/api/)
 
 def get_news() -> None:
-    base_url = "https://newsapi.org/v2/everything?"
+    URL1 = "https://newsapi.org/v2/everything?"
 
     params = {
         "q": "python", 
-        "pageSize": 20, 
+        "pageSize": 8, 
         "apiKey": "21e1d2528b9d44d79953725b95dbd946"
     }
-    res1 = requests.get(base_url, params=params)
+    res1 = requests.get(URL1, params=params)
     if res1.status_code == 200:
         articles = res1.json()["articles"]
         for article in articles:
@@ -31,8 +31,7 @@ def get_news() -> None:
             print(article["description"])
             print()
     else:
-        # Print the error message
-        print("Error:", res1.json()["message"])
+        print("There was an error: ", res1.json()["message"])
 
 def main():
     temp = get_weather("London")
