@@ -33,24 +33,59 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
 
 def get_inbox(recipient: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Get inbox makes POST request of all the mail using the recipient within the inbox that has been collected
+    
+     Args:
+        recipient (str): The recipient of the mail
+
+    Returns:
+        Nothing as says with none
+    
+    
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Get sent makes POST request of all the mail using the sender within the inbox that has been collected
+    
+     Args:
+        sender (str): The sender of the mail
+
+    Returns:
+        Nothing as says with none
+    
+    
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+      Get mail makes a request as it uses the the unique id of a certain mail in order to find the mail
+    
+     Args:
+        mail_id (str): the unique id that is associated to each mail
+
+    Returns:
+        Nothing as says with none
+    
+    
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Delete mail makes a rsimilar request to the get mail function where it uses the unique id for a certain 
+    mail to find it but instead of just finding it, it will delete the mail from the inbox
+    
+     Args:
+        mail_id (str): the unique id that is associated to each mail
+
+    Returns:
+        Nothing as says with none
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
